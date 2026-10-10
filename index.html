@@ -6,27 +6,128 @@
 <title>Uso responsable de las TIC | Proyecto PICA</title>
 <style>
 :root{--navy:#12233f;--blue:#2463eb;--cyan:#22c1c3;--pale:#eff8ff;--ink:#243247;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.65;background:#f7fbff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.65;background:#ffffff}
 header{background:linear-gradient(125deg,var(--navy),#1e58a8 60%,#22a6b3);color:white;padding:22px 7%;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #10294a22}
 .nav{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.5px}.nav a{color:white;text-decoration:none;margin:0 8px;font-size:.95rem}.nav a:hover{text-decoration:underline}
-.hero{padding:90px 8% 80px;background:linear-gradient(120deg,#e8f5ff,#f3ffff);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.hero h1{font-size:clamp(2.4rem,5vw,4.3rem);line-height:1.08;margin:12px 0;color:var(--navy)}
-.hero p{font-size:1.15rem;max-width:650px}
-.hero-img{max-width:100%;width:420px;height:auto;border-radius:18px;margin:20px 0;box-shadow:0 10px 25px rgba(18,35,63,0.15)}
-section{padding:65px 8%;scroll-margin-top:90px}.section-head{text-align:center;max-width:760px;margin:0 auto 35px}.section-head h2{font-size:2rem;color:var(--navy);margin-bottom:8px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card{background:white;padding:25px;border-radius:18px;box-shadow:0 8px 24px #1d40640c;border:1px solid #e3eef9;transition:transform 0.2s ease, box-shadow 0.2s ease}.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #1d40641a}.card .icon{font-size:2rem}.card h3{color:#1c4c91;margin:8px 0}.soft{background:#edf7ff}.steps{max-width:850px;margin:auto}.step{display:flex;gap:18px;margin:18px 0;background:white;padding:20px;border-radius:15px}.num{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dceaff;color:#1747a6;font-weight:bold;font-size:1.1rem}.callout{background:#12233f;color:white;border-radius:20px;padding:30px;text-align:center;max-width:950px;margin:auto}.callout h2{color:white}.checklist{columns:2;max-width:850px;margin:auto}.checklist li{padding:7px 0}
+
+/* Estilos de la sección Principal (Hero) */
+.hero{padding:60px 8% 70px;background:linear-gradient(135deg, #e6f2ff 0%, #f0f7ff 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.hero-header-container{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;max-width:900px;margin-bottom:10px}
+.hero-title-box{flex:1;min-width:280px;text-align:center}
+
+/* Título principal con cuadro colorido */
+.hero h1{
+  font-size:clamp(2rem, 4vw, 3.2rem);
+  line-height:1.2;
+  margin:0;
+  color:#ffffff;
+  background: linear-gradient(135deg, #1e58a8, #2463eb, #00b4d8);
+  padding: 16px 28px;
+  border-radius: 16px;
+  display: inline-block;
+  box-shadow: 0 8px 20px rgba(36, 99, 235, 0.3);
+}
+
+.school-logo{width:130px;height:auto;max-width:100%;flex:0 0 auto;filter:drop-shadow(0 4px 8px rgba(18,35,63,0.15))}
+.hero p{font-size:1.15rem;max-width:650px;margin-top:20px}
+.hero-img{max-width:100%;width:420px;height:auto;border-radius:18px;margin:20px 0;box-shadow:0 10px 25px rgba(18,35,63,0.12)}
+
+section{padding:65px 8%;scroll-margin-top:90px}
+.section-head{text-align:center;max-width:850px;margin:0 auto 35px}
+
+/* Títulos de secciones en cuadros coloridos */
+.section-head h2{
+  font-size: 1.8rem;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 14px;
+  display: inline-block;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Colores específicos para los cuadros de cada sección */
+#importancia .section-head h2 {
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+}
+
+#riesgos .section-head h2 {
+  background: linear-gradient(135deg, #e63946, #d90429);
+}
+
+#consejos .section-head h2 {
+  background: linear-gradient(135deg, #38b000, #007200);
+}
+
+#video-seccion .section-head h2 {
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+}
+
+.checklist-section .section-head h2 {
+  background: linear-gradient(135deg, #7209b7, #4361ee);
+}
+
+/* --- SECCIONES --- */
+#importancia{background:linear-gradient(135deg, #e8f8f5 0%, #f4fbf9 100%);}
+.importance-container{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-bottom:35px}
+.importance-img{max-width:100%;width:350px;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(18,35,63,0.1);flex:0 0 auto}
+.importance-text{flex:1;min-width:280px;text-align:left}
+
+#riesgos{background:linear-gradient(135deg, #f2efff 0%, #f8f6ff 100%);}
+.risks-container{display:flex;align-items:center;justify-content:space-between;gap:35px;flex-wrap:wrap-reverse;margin-bottom:35px}
+.risks-text{flex:1;min-width:280px;max-width:600px;text-align:justify;line-height:1.75;font-size:1.05rem;color:#2c3e50}
+.risks-img{max-width:100%;width:350px;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(18,35,63,0.1);flex:0 0 auto}
+
+#consejos{background:linear-gradient(135deg, #fffbf0 0%, #fffdf7 100%);}
+
+#video-seccion {background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%); text-align: center;}
+.local-video-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+.local-video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  outline: none;
+}
+
+/* Tarjetas y Pasos */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card{background:white;padding:25px;border-radius:18px;box-shadow:0 8px 24px #1d40640c;border:1px solid #e3eef9;transition:transform 0.2s ease, box-shadow 0.2s ease}.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #1d40641a}.card .icon{font-size:2rem}.card h3{color:#1c4c91;margin:8px 0}
+.steps{max-width:850px;margin:auto}.step{display:flex;gap:18px;margin:18px 0;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}.num{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dceaff;color:#1747a6;font-weight:bold;font-size:1.1rem}
+
+.checklist-section{background:#f4f9ff;}
+.checklist{columns:2;max-width:850px;margin:auto}.checklist li{padding:7px 0}
+
+.callout{background:linear-gradient(135deg, #182e52 0%, #244170 100%);color:white;border-radius:20px;padding:35px;text-align:center;max-width:950px;margin:auto;box-shadow:0 10px 25px rgba(18,35,63,0.15)}.callout h2{color:white}
+
 .author-box{text-align: left; margin: 15px 0;}
 .author-list{margin: 5px 0; padding-left: 0; list-style: none; text-align: left;}
 .author-list li{font-weight: bold; color: #1d4e9b; margin-bottom: 4px;}
+
 footer{background:#0c1930;color:#dbe8ff;text-align:center;padding:28px 7%}
 footer p {margin: 8px 0;}
-@media(max-width:750px){.hero{padding-top:55px}.nav{justify-content:center}.nav a{margin:4px}.checklist{columns:1}header{position:static}}
+
+@media(max-width:750px){.hero{padding-top:40px}.nav{justify-content:center}.nav a{margin:4px}.checklist{columns:1}.importance-container, .risks-container{flex-direction:column;text-align:center}.importance-text, .risks-text{text-align:left;max-width:100%}.hero-header-container{flex-direction:column;text-align:center}.hero-title-box{text-align:center}header{position:static}}
 </style>
 </head>
 <body>
-<header><div class="nav"><div class="brand">📘 PROYECTO PICA</div><nav aria-label="Menú principal"><a href="#inicio">Inicio</a><a href="#importancia">Importancia</a><a href="#riesgos">Riesgos</a><a href="#consejos">Consejos</a><a href="#compromiso">Compromiso</a></nav></div></header>
+<header><div class="nav"><div class="brand">📘 PROYECTO PICA</div><nav aria-label="Menú principal"><a href="#inicio">Inicio</a><a href="#importancia">Importancia</a><a href="#riesgos">Riesgos</a><a href="#consejos">Consejos</a><a href="#video-seccion">Video</a><a href="#compromiso">Compromiso</a></nav></div></header>
 <main>
+
+<!-- 1. INICIO -->
 <section class="hero" id="inicio">
-  <h1>Uso responsable de las TIC</h1>
+  <div class="hero-header-container">
+    <div class="hero-title-box">
+      <h1>Uso responsable de las TIC</h1>
+    </div>
+    <img src="logo_colegio.png" alt="Logo Colegio Particular Mundo América" class="school-logo">
+  </div>
+
   <p>La tecnología nos conecta, nos enseña y nos ayuda a crear. Aprendamos a utilizarla de manera segura, respetuosa, crítica y equilibrada.</p>
   
   <img src="imagen_4.png" alt="Iconos de Tecnologías de la Información y Comunicación" class="hero-img">
@@ -42,36 +143,97 @@ footer p {margin: 8px 0;}
     </ul>
   </div>
 </section>
-<section id="importancia"><div class="section-head"><h2>¿Qué son las TIC y por qué importan?</h2><p>Las Tecnologías de la Información y la Comunicación (TIC) incluyen herramientas y recursos digitales que permiten crear, buscar, compartir y comunicar información.</p></div>
-<div class="cards">
-<article class="card"><div class="icon">📚</div><h3>Aprendizaje</h3><p>Facilitan el acceso a libros digitales, clases virtuales, tutoriales y materiales educativos que amplían nuestros conocimientos.</p></article>
-<article class="card"><div class="icon">🤝</div><h3>Comunicación</h3><p>Permiten conversar y colaborar con familiares, docentes y compañeros, incluso cuando están lejos.</p></article>
-<article class="card"><div class="icon">🎨</div><h3>Creatividad</h3><p>Ayudan a crear presentaciones, videos, páginas web y proyectos para expresar ideas y resolver problemas.</p></article>
-</div></section>
-<section class="soft" id="riesgos"><div class="section-head"><h2>Riesgos del uso inadecuado</h2><p>Conocer los riesgos permite prevenirlos y tomar mejores decisiones en el entorno digital.</p></div>
-<div class="cards">
-<article class="card"><div class="icon">🔐</div><h3>Pérdida de privacidad</h3><p>Compartir contraseñas, ubicación, documentos o datos personales puede exponer nuestra identidad y seguridad.</p></article>
-<article class="card"><div class="icon">🧩</div><h3>Desinformación</h3><p>Los rumores, noticias falsas y contenidos manipulados pueden confundir. Es importante verificar antes de compartir.</p></article>
-<article class="card"><div class="icon">💬</div><h3>Ciberacoso</h3><p>Insultar, amenazar, humillar o difundir imágenes de alguien sin permiso causa daño. No participes y busca ayuda.</p></article>
-<article class="card"><div class="icon">⏳</div><h3>Uso excesivo</h3><p>Pasar demasiado tiempo conectado puede afectar el descanso, el estudio, la actividad física y la convivencia.</p></article>
-</div></section>
-<section id="consejos"><div class="section-head"><h2>10 consejos para usar las TIC responsablemente</h2><p>Pequeñas acciones cotidianas hacen que Internet sea un espacio más seguro para todos.</p></div>
-<div class="steps">
-<div class="step"><div class="num">1</div><div><b>Protege tus contraseñas.</b> Crea claves largas y diferentes; no las compartas con otras personas.</div></div>
-<div class="step"><div class="num">2</div><div><b>Cuida tus datos personales.</b> Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada.</div></div>
-<div class="step"><div class="num">3</div><div><b>Verifica la información.</b> Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia.</div></div>
-<div class="step"><div class="num">4</div><div><b>Respeta a los demás.</b> Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona.</div></div>
-<div class="step"><div class="num">5</div><div><b>Pide permiso.</b> No publiques fotos, audios o conversaciones de otras personas sin su autorización.</div></div>
-<div class="step"><div class="num">6</div><div><b>Desconfía de enlaces sospechosos.</b> No abras archivos ni mensajes que soliciten claves o datos bancarios.</div></div>
-<div class="step"><div class="num">7</div><div><b>Actualiza tus dispositivos.</b> Mantén el sistema y las aplicaciones actualizados y utiliza medidas de seguridad.</div></div>
-<div class="step"><div class="num">8</div><div><b>Equilibra tu tiempo.</b> Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir.</div></div>
-<div class="step"><div class="num">9</div><div><b>Actúa frente al ciberacoso.</b> No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza.</div></div>
-<div class="step"><div class="num">10</div><div><b>Usa la tecnología para hacer el bien.</b> Aprende, crea, colabora y comparte contenido que aporte algo positivo.</div></div>
-</div></section>
-<section class="soft"><div class="section-head"><h2>Mi lista de verificación digital</h2><p>Antes de compartir algo, haz una pausa y comprueba lo siguiente:</p></div>
-<ul class="checklist"><li>☑ ¿Es verdadero y puedo verificarlo?</li><li>☑ ¿Respeta la privacidad de los demás?</li><li>☑ ¿El lenguaje es respetuoso?</li><li>☑ ¿Estoy protegiendo mis datos?</li><li>☑ ¿Es necesario compartirlo?</li><li>☑ ¿La fuente es confiable?</li><li>☑ ¿Estoy usando mi tiempo de forma equilibrada?</li><li>☑ ¿Sé qué hacer si algo me incomoda?</li></ul></section>
-<section id="compromiso"><div class="callout"><h2>Ser responsables también en el mundo digital</h2><p>Nos comprometemos a proteger nuestra información, respetar a los demás, verificar lo que compartimos y utilizar la tecnología para aprender y contribuir positivamente a nuestra comunidad.</p><p><b>La tecnología es una herramienta: úsala con criterio, empatía y responsabilidad.</b></p></div></section>
+
+<!-- 2. IMPORTANCIA -->
+<section id="importancia">
+  <div class="section-head">
+    <h2>¿Qué son las TIC y por qué importan?</h2>
+  </div>
+  
+  <div class="importance-container">
+    <img src="imagen_5.png" alt="Iconos de TIC" class="importance-img">
+    <div class="importance-text">
+      <p style="font-size: 1.1rem;">Las Tecnologías de la Información y la Comunicación (TIC) incluyen herramientas y recursos digitales que permiten crear, buscar, compartir y comunicar información.</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <article class="card"><div class="icon">📚</div><h3>Aprendizaje</h3><p>Facilitan el acceso a libros digitales, clases virtuales, tutoriales y materiales educativos que amplían nuestros conocimientos.</p></article>
+    <article class="card"><div class="icon">🤝</div><h3>Comunicación</h3><p>Permiten conversar y colaborar con familiares, docentes y compañeros, incluso cuando están lejos.</p></article>
+    <article class="card"><div class="icon">🎨</div><h3>Creatividad</h3><p>Ayudan a crear presentaciones, videos, páginas web y proyectos para expresar ideas y resolver problemas.</p></article>
+  </div>
+</section>
+
+<!-- 3. RIESGOS -->
+<section id="riesgos">
+  <div class="section-head">
+    <h2>Riesgos del uso inadecuado</h2>
+  </div>
+
+  <div class="risks-container">
+    <div class="risks-text">
+      <p>El uso inadecuado de las TIC provoca adicción digital, ansiedad y aislamiento social, deteriorando las relaciones interpersonales. Físicamente, el exceso de pantallas causa fatiga ocular, dolores cervicales y sedentarismo debido a la falta de movilidad. En el ámbito académico y laboral, las distracciones constantes generan una pérdida drástica de concentración y bajo rendimiento. Además, expone a los usuarios a peligros graves como el ciberacoso, estafas virtuales y robo de identidad.</p>
+    </div>
+    <img src="imagen_6.png" alt="Riesgos del uso de la tecnología" class="risks-img">
+  </div>
+
+  <div class="cards">
+    <article class="card"><div class="icon">🔐</div><h3>Pérdida de privacidad</h3><p>Compartir contraseñas, ubicación, documentos o datos personales puede exponer nuestra identidad y seguridad.</p></article>
+    <article class="card"><div class="icon">🧩</div><h3>Desinformación</h3><p>Los rumores, noticias falsas y contenidos manipulados pueden confundir. Es importante verificar antes de compartir.</p></article>
+    <article class="card"><div class="icon">💬</div><h3>Ciberacoso</h3><p>Insultar, amenazar, humillar o difundir imágenes de alguien sin permiso causa daño. No participes y busca ayuda.</p></article>
+    <article class="card"><div class="icon">⏳</div><h3>Uso excesivo</h3><p>Pasar demasiado tiempo conectado puede afectar el descanso, el estudio, la actividad física y la convivencia.</p></article>
+  </div>
+</section>
+
+<!-- 4. CONSEJOS -->
+<section id="consejos">
+  <div class="section-head">
+    <h2>10 consejos para usar las TIC responsablemente</h2>
+    <p>Pequeñas acciones cotidianas hacen que Internet sea un espacio más seguro para todos.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div><b>Protege tus contraseñas.</b> Crea claves largas y diferentes; no las compartas con otras personas.</div></div>
+    <div class="step"><div class="num">2</div><div><b>Cuida tus datos personales.</b> Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada.</div></div>
+    <div class="step"><div class="num">3</div><div><b>Verifica la información.</b> Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia.</div></div>
+    <div class="step"><div class="num">4</div><div><b>Respeta a los demás.</b> Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona.</div></div>
+    <div class="step"><div class="num">5</div><div><b>Pide permiso.</b> No publiques fotos, audios o conversaciones de otras personas sin su autorización.</div></div>
+    <div class="step"><div class="num">6</div><div><b>Desconfía de enlaces sospechosos.</b> No abras archivos ni mensajes que soliciten claves o datos bancarios.</div></div>
+    <div class="step"><div class="num">7</div><div><b>Actualiza tus dispositivos.</b> Mantén el sistema y las aplicaciones actualizados y utiliza medidas de seguridad.</div></div>
+    <div class="step"><div class="num">8</div><div><b>Equilibra tu tiempo.</b> Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir.</div></div>
+    <div class="step"><div class="num">9</div><div><b>Actúa frente al ciberacoso.</b> No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza.</div></div>
+    <div class="step"><div class="num">10</div><div><b>Usa la tecnología para hacer el bien.</b> Aprende, crea, colabora y comparte contenido que aporte algo positivo.</div></div>
+  </div>
+</section>
+
+<!-- 5. SECCIÓN DE VIDEO LOCAL -->
+<section id="video-seccion">
+  <div class="section-head">
+    <h2>Video Informativo sobre las TIC</h2>
+    <p>Mira este video explicativo sobre la importancia y el buen uso de la tecnología:</p>
+  </div>
+  
+  <div class="local-video-container">
+    <video controls>
+      <source src="video_tic.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de videos.
+    </video>
+  </div>
+</section>
+
+<!-- CHECKLIST Y COMPROMISO -->
+<section class="checklist-section">
+  <div class="section-head">
+    <h2>Mi lista de verificación digital</h2>
+    <p>Antes de compartir algo, haz una pausa y comprueba lo siguiente:</p>
+  </div>
+  <ul class="checklist"><li>☑ ¿Es verdadero y puedo verificarlo?</li><li>☑ ¿Respeta la privacidad de los demás?</li><li>☑ ¿El lenguaje es respetuoso?</li><li>☑ ¿Estoy protegiendo mis datos?</li><li>☑ ¿Es necesario compartirlo?</li><li>☑ ¿La fuente es confiable?</li><li>☑ ¿Estoy usando mi tiempo de forma equilibrada?</li><li>☑ ¿Sé qué hacer si algo me incomoda?</li></ul>
+</section>
+
+<section id="compromiso" style="background:#ffffff;">
+  <div class="callout"><h2>Ser responsables también en el mundo digital</h2><p>Nos comprometemos a proteger nuestra información, respetar a los demás, verificar lo que compartimos y utilizar la tecnología para aprender y contribuir positivamente a nuestra comunidad.</p><p><b>La tecnología es una herramienta: úsala con criterio, empatía y responsabilidad.</b></p></div>
+</section>
 </main>
+
 <footer>
   <p><b>Proyecto PICA · Diseño y Desarrollo Web</b></p>
   <p><b>Curso:</b> 2do Bachillerato</p>

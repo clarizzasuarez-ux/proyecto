@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,6 +17,56 @@ header{background:linear-gradient(125deg,var(--navy),#1e58a8 60%,#22a6b3);color:
 .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .nav a{color:white;text-decoration:none;margin:0 4px;font-size:.95rem}.nav a:hover, .nav a:focus{text-decoration:underline;outline:2px solid #fff}
 
+/* BURBUJA FLOTANTE DE ACCESIBILIDAD PARA AUDIO */
+.accessibility-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #12233f, #1e58a8);
+  color: white;
+  padding: 14px 18px;
+  border-radius: 30px;
+  box-shadow: 0 8px 25px rgba(18, 35, 63, 0.35);
+  border: 2px solid var(--cyan);
+  animation: bounce 2s infinite ease-in-out;
+  max-width: 320px;
+}
+
+.accessibility-bubble .bubble-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.accessibility-bubble p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.accessibility-bubble .close-bubble {
+  background: none;
+  border: none;
+  color: #a4b8df;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 4px;
+  margin-left: 4px;
+}
+.accessibility-bubble .close-bubble:hover {
+  color: white;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 /* Controles de audio del encabezado (Lector General) */
 .audio-controls {
   display: flex;
@@ -30,9 +78,9 @@ header{background:linear-gradient(125deg,var(--navy),#1e58a8 60%,#22a6b3);color:
   background: var(--cyan);
   color: #0c1930;
   border: none;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -172,6 +220,7 @@ section{padding:65px 8%;scroll-margin-top:90px}
 }
 
 #consejos{background:linear-gradient(135deg, #fffbf0 0%, #fffdf7 100%);}
+
 #video-seccion {background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%); text-align: center;}
 .local-video-container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
 .local-video-container video { width: 100%; height: auto; border-radius: 12px; outline: none; }
@@ -186,10 +235,8 @@ section{padding:65px 8%;scroll-margin-top:90px}
 .step{display:flex;gap:18px;margin:18px 0;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}
 .num{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dceaff;color:#1747a6;font-weight:bold;font-size:1.1rem}
 
-/* --- ESTILOS DE LA CHECKLIST DINÁMICA --- */
+/* CHECKLIST DINÁMICA */
 .checklist-section{background:#f4f9ff;}
-
-/* Barra de Progreso Dinámica */
 .progress-container {
   max-width: 850px;
   margin: 0 auto 25px auto;
@@ -220,7 +267,6 @@ section{padding:65px 8%;scroll-margin-top:90px}
   transition: width 0.4s ease;
 }
 
-/* Grid de tarjetas dinámicas */
 .interactive-checklist {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -284,13 +330,25 @@ section{padding:65px 8%;scroll-margin-top:90px}
 footer{background:#0c1930;color:#dbe8ff;text-align:center;padding:28px 7%}
 footer p {margin: 8px 0;}
 
-@media(max-width:750px){.hero{padding-top:40px}.nav{justify-content:center}.nav a{margin:4px}.interactive-checklist{grid-template-columns:1fr}.importance-container, .risks-container, .hero-content-flex{flex-direction:column;text-align:center}.importance-text, .risks-text, .author-box{text-align:left;max-width:100%}.hero-header-container{flex-direction:column;text-align:center}.hero-title-box{text-align:center}header{position:static}}
+@media(max-width:750px){
+  .hero{padding-top:40px}.nav{justify-content:center}.nav a{margin:4px}.interactive-checklist{grid-template-columns:1fr}.importance-container, .risks-container, .hero-content-flex{flex-direction:column;text-align:center}.importance-text, .risks-text, .author-box{text-align:left;max-width:100%}.hero-header-container{flex-direction:column;text-align:center}.hero-title-box{text-align:center}header{position:static}
+  .accessibility-bubble{bottom: 10px; right: 10px; max-width: 280px; padding: 10px 14px;}
+}
 </style>
 </head>
 <body>
 
 <!-- Enlace de salto rápido para accesibilidad por teclado -->
 <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+<!-- BURBUJA DE ACCESIBILIDAD PARA PERSONAS SORDAS / CON DIFICULTAD AUDITIVA O VISUAL -->
+<div class="accessibility-bubble" id="burbuja-accesibilidad" role="alert" aria-live="polite">
+  <div class="bubble-icon" aria-hidden="true">🧏‍♂️🔊</div>
+  <p>
+    <strong>Accesibilidad por voz:</strong> Puedes escuchar en audio cualquier sección o toda la página presionando el botón <b>"Escuchar todo"</b> o los botones <b>🔊</b>.
+  </p>
+  <button class="close-bubble" onclick="cerrarBurbuja()" aria-label="Cerrar notificación de accesibilidad">✕</button>
+</div>
 
 <header>
   <div class="nav">
@@ -305,12 +363,12 @@ footer p {margin: 8px 0;}
         <a href="#compromiso">Compromiso</a>
       </nav>
 
-      <!-- Lector General (Lee todo el documento) -->
+      <!-- Botón General con eventos nativos -->
       <div class="audio-controls" aria-label="Controles de lectura general por voz">
-        <button id="btn-leer-todo" class="audio-btn-main" onclick="toggleLecturaGeneral()" aria-label="Escuchar toda la página">
+        <button id="btn-leer-todo" class="audio-btn-main" aria-label="Escuchar toda la página">
           🔊 <span id="btn-text-todo">Escuchar todo</span>
         </button>
-        <button id="btn-detener-todo" class="audio-btn-main secondary" onclick="detenerLectura()" style="display:none;" aria-label="Detener audio">
+        <button id="btn-detener-todo" class="audio-btn-main secondary" style="display:none;" aria-label="Detener audio">
           ⏹️ Detener
         </button>
       </div>
@@ -361,7 +419,7 @@ footer p {margin: 8px 0;}
     <img src="imagen_5.png" alt="Gráfico conceptual sobre herramientas de información y comunicación" class="importance-img">
     <div class="importance-text" id="parrafo-que-son-tic">
       <p style="font-size: 1.1rem;">
-        Las TIC (Tecnologías de la Información y la Comunicación) son el conjunto de recursos, herramientas, programas, redes y dispositivos tecnológicos que permiten recopilar, procesar, almacenar, transmitir y presentar información en formato digital (como voz, datos, texto, imágenes y video)[cite: 3].
+        Las TIC (Tecnologías de la Información y la Comunicación) son el conjunto de recursos, herramientas, programas, redes y dispositivos tecnológicos que permiten recopilar, procesar, almacenar, transmitir y presentar información en formato digital (como voz, datos, texto, imágenes y video).
         <button class="audio-btn-section" onclick="leerTexto('parrafo-que-son-tic')" aria-label="Escuchar qué son las TIC">🔊 Escuchar párrafo</button>
       </p>
     </div>
@@ -395,7 +453,7 @@ footer p {margin: 8px 0;}
   <div class="risks-container">
     <div class="risks-text" id="parrafo-riesgos">
       <p>
-        El uso inadecuado de las TIC provoca adicción digital, ansiedad y aislamiento social, deteriorando las relaciones interpersonales. Físicamente, el exceso de pantallas causa fatiga ocular, dolores cervicales y sedentarismo debido a la falta de movilidad. En el ámbito académico y laboral, las distracciones constantes generan una pérdida drástica de concentración y bajo rendimiento. Además, expone a los usuarios a peligros graves como el ciberacoso, estafas virtuales y robo de identidad[cite: 1].
+        El uso inadecuado de las TIC provoca adicción digital, ansiedad y aislamiento social, deteriorando las relaciones interpersonales. Físicamente, el exceso de pantallas causa fatiga ocular, dolores cervicales y sedentarismo debido a la falta de movilidad. En el ámbito académico y laboral, las distracciones constantes generan una pérdida drástica de concentración y bajo rendimiento. Además, expone a los usuarios a peligros graves como el ciberacoso, estafas virtuales y robo de identidad.
         <button class="audio-btn-section" onclick="leerTexto('parrafo-riesgos')" aria-label="Escuchar riesgos del uso inadecuado">🔊 Escuchar párrafo</button>
       </p>
     </div>
@@ -485,42 +543,42 @@ footer p {margin: 8px 0;}
 
   <!-- Lista interactiva de Checkboxes -->
   <ul class="interactive-checklist" id="bloque-checklist-interactivo" aria-label="Lista interactiva de verificación digital">
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk1" onchange="actualizarProgreso()">
       <label for="chk1">¿Es verdadero y puedo verificarlo?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Es verdadero y puedo verificarlo?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk2" onchange="actualizarProgreso()">
       <label for="chk2">¿Es necesario compartirlo?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Es necesario compartirlo?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk3" onchange="actualizarProgreso()">
       <label for="chk3">¿Respeta la privacidad de los demás?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Respeta la privacidad de los demás?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk4" onchange="actualizarProgreso()">
       <label for="chk4">¿La fuente es confiable?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿La fuente es confiable?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk5" onchange="actualizarProgreso()">
       <label for="chk5">¿El lenguaje es respetuoso?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿El lenguaje es respetuoso?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk6" onchange="actualizarProgreso()">
       <label for="chk6">¿Estoy usando mi tiempo de forma equilibrada?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Estoy usando mi tiempo de forma equilibrada?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk7" onchange="actualizarProgreso()">
       <label for="chk7">¿Estoy protegiendo mis datos?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Estoy protegiendo mis datos?')">🔊</button>
     </li>
-    <li class="check-item" onclick="toggleCheck(this)">
+    <li class="check-item" onclick="toggleCheck(this, event)">
       <input type="checkbox" id="chk8" onchange="actualizarProgreso()">
       <label for="chk8">¿Sé qué hacer si algo me incomoda?</label>
       <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Sé qué hacer si algo me incomoda?')">🔊</button>
@@ -549,12 +607,29 @@ footer p {margin: 8px 0;}
   <p style="margin-top: 15px; font-size: 0.9rem; color: #a4b8df;">Contenido educativo elaborado para promover una ciudadanía digital segura y respetuosa.</p>
 </footer>
 
-<!-- SCRIPTS INTERACTIVOS Y DE LECTURA -->
+<!-- SCRIPT DE SÍNTESIS DE VOZ Y CHECKLIST -->
 <script>
-  /* --- LÓGICA DE LA CHECKLIST DINÁMICA --- */
-  function toggleCheck(container) {
-    const checkbox = container.querySelector('input[type="checkbox"]');
-    if (event.target !== checkbox && !event.target.classList.contains('audio-btn-section')) {
+  function cerrarBurbuja() {
+    const burbuja = document.getElementById('burbuja-accesibilidad');
+    if (burbuja) {
+      burbuja.style.display = 'none';
+    }
+  }
+
+  let voices = [];
+  function cargarVoces() {
+    if ('speechSynthesis' in window) {
+      voices = window.speechSynthesis.getVoices();
+    }
+  }
+  cargarVoces();
+  if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = cargarVoces;
+  }
+
+  function toggleCheck(container, evt) {
+    if (evt.target.tagName !== 'INPUT' && !evt.target.classList.contains('audio-btn-section')) {
+      const checkbox = container.querySelector('input[type="checkbox"]');
       checkbox.checked = !checkbox.checked;
     }
     actualizarProgreso();
@@ -579,85 +654,86 @@ footer p {margin: 8px 0;}
     document.getElementById('progress-text').textContent = porcentaje + '% completado';
   }
 
-  /* --- SCRIPT COMPLETO DE SÍNTESIS DE VOZ --- */
-  let synth = window.speechSynthesis;
   let isPausedGeneral = false;
 
-  function toggleLecturaGeneral() {
-    const btnText = document.getElementById("btn-text-todo");
-    const btnDetener = document.getElementById("btn-detener-todo");
+  function obtenerTextoLimpio(elemento) {
+    if (!elemento) return '';
+    let texto = elemento.innerText || elemento.textContent || '';
+    texto = texto.replace(/🔊\s*(Escuchar\s*párrafo|Escuchar\s*lista|Escuchar\s*todos\s*los\s*consejos|Escuchar)?/gi, '');
+    return texto.trim();
+  }
 
-    if (synth.speaking && !synth.paused) {
-      synth.pause();
-      isPausedGeneral = true;
-      btnText.textContent = "Reanudar todo";
-      return;
-    } else if (synth.paused && isPausedGeneral) {
-      synth.resume();
-      isPausedGeneral = false;
-      btnText.textContent = "Pausar todo";
+  function ejecutarLectura(texto, onStartCallback, onEndCallback) {
+    if (!('speechSynthesis' in window)) {
+      alert("Tu navegador no admite lectura en voz alta.");
       return;
     }
 
-    detenerLectura();
-
-    const mainContent = document.getElementById("contenido-principal");
-    if (!mainContent) return;
-
-    const clon = mainContent.cloneNode(true);
-    const botones = clon.querySelectorAll('.audio-btn-section, .audio-controls');
-    botones.forEach(btn => btn.remove());
-
-    const texto = clon.innerText.trim();
-
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = "es-ES";
-    utterance.rate = 1.0;
-
-    utterance.onstart = function() {
-      btnText.textContent = "Pausar todo";
-      btnDetener.style.display = "inline-flex";
-    };
-
-    utterance.onend = resetPlayerGeneral;
-    utterance.onerror = resetPlayerGeneral;
-
-    synth.speak(utterance);
-  }
-
-  function leerTexto(elementId) {
-    detenerLectura();
-
-    const elemento = document.getElementById(elementId);
-    if (!elemento) return;
-
-    const clon = elemento.cloneNode(true);
-    const botones = clon.querySelectorAll('.audio-btn-section');
-    botones.forEach(btn => btn.remove());
-
-    const texto = clon.innerText.trim();
+    window.speechSynthesis.cancel();
     if (!texto) return;
 
     const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = "es-ES";
+    utterance.lang = 'es-ES';
     utterance.rate = 1.0;
 
-    synth.speak(utterance);
+    if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+    const vozEspanol = voices.find(v => v.lang.startsWith('es'));
+    if (vozEspanol) utterance.voice = vozEspanol;
+
+    if (onStartCallback) utterance.onstart = onStartCallback;
+    utterance.onend = function() { if (onEndCallback) onEndCallback(); };
+    utterance.onerror = function() { if (onEndCallback) onEndCallback(); };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const btnLeerTodo = document.getElementById('btn-leer-todo');
+    const btnDetenerTodo = document.getElementById('btn-detener-todo');
+    const btnTextTodo = document.getElementById('btn-text-todo');
+
+    btnLeerTodo.addEventListener('click', function() {
+      const synth = window.speechSynthesis;
+
+      if (synth.speaking && !synth.paused) {
+        synth.pause();
+        isPausedGeneral = true;
+        btnTextTodo.textContent = "Reanudar todo";
+        return;
+      } else if (synth.paused && isPausedGeneral) {
+        synth.resume();
+        isPausedGeneral = false;
+        btnTextTodo.textContent = "Pausar todo";
+        return;
+      }
+
+      const mainContent = document.getElementById("contenido-principal");
+      const textoCompleto = obtenerTextoLimpio(mainContent);
+
+      ejecutarLectura(textoCompleto, function() {
+        btnTextTodo.textContent = "Pausar todo";
+        btnDetenerTodo.style.display = "inline-flex";
+      }, resetPlayerGeneral);
+    });
+
+    btnDetenerTodo.addEventListener('click', detenerLectura);
+  });
+
+  function leerTexto(elementId) {
+    detenerLectura();
+    const elemento = document.getElementById(elementId);
+    const texto = obtenerTextoLimpio(elemento);
+    ejecutarLectura(texto);
   }
 
   function leerTextoDirecto(texto) {
     detenerLectura();
-
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = "es-ES";
-    utterance.rate = 1.0;
-
-    synth.speak(utterance);
+    ejecutarLectura(texto);
   }
 
   function detenerLectura() {
-    if (synth) {
-      synth.cancel();
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
     }
     resetPlayerGeneral();
   }
@@ -673,4 +749,3 @@ footer p {margin: 8px 0;}
 
 </body>
 </html>
-

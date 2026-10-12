@@ -23,7 +23,7 @@ header{background:linear-gradient(125deg,var(--navy),#1e58a8 60%,#22a6b3);color:
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 99999; /* Asegura estar por encima de todos los elementos en móviles */
+  z-index: 99999;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -190,6 +190,33 @@ section{padding:65px 8%;scroll-margin-top:90px}
 
 #consejos{background:linear-gradient(135deg, #fffbf0 0%, #fffdf7 100%);}
 
+/* DISPOSICIÓN DE LA IMAGEN EN LA SECCIÓN DE CONSEJOS */
+.consejos-flex-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 35px;
+  max-width: 1150px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.consejos-left-img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(18,35,63,0.14);
+  flex: 0 0 auto;
+  position: sticky;
+  top: 110px;
+}
+
+.consejos-right-steps {
+  flex: 1;
+  min-width: 300px;
+}
+
 /* SECCIÓN DE VIDEO MEJORADA */
 #video-seccion {background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%); text-align: center;}
 .local-video-container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
@@ -201,8 +228,8 @@ section{padding:65px 8%;scroll-margin-top:90px}
 .card .icon{font-size:2rem}
 .card h3{color:#1c4c91;margin:8px 0}
 
-.steps{max-width:850px;margin:auto}
-.step{display:flex;gap:18px;margin:18px 0;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}
+.steps{max-width:100%;margin:auto}
+.step{display:flex;gap:18px;margin:14px 0;background:white;padding:18px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}
 .num{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dceaff;color:#1747a6;font-weight:bold;font-size:1.1rem}
 
 /* CHECKLIST DINÁMICA */
@@ -301,6 +328,11 @@ footer{background:#0c1930;color:#dbe8ff;text-align:center;padding:28px 7%}
 footer p {margin: 8px 0;}
 
 /* REGLAS RESPONSIVAS PARA TELÉFONOS MÓVILES */
+@media(max-width:850px){
+  .consejos-flex-container{flex-direction:column;align-items:center;}
+  .consejos-left-img{position:static;width:100%;max-width:400px;}
+}
+
 @media(max-width:750px){
   .hero{padding-top:40px}.nav{justify-content:center}.nav a{margin:4px}.interactive-checklist{grid-template-columns:1fr}.importance-container, .risks-container, .hero-content-flex{flex-direction:column;text-align:center}.importance-text, .risks-text, .author-box{text-align:left;max-width:100%}.hero-header-container{flex-direction:column;text-align:center}.hero-title-box{text-align:center}header{position:static}
   
@@ -388,7 +420,7 @@ footer p {margin: 8px 0;}
     <img src="imagen_5.png" alt="Gráfico conceptual sobre herramientas de información y comunicación" class="importance-img">
     <div class="importance-text" id="parrafo-que-son-tic">
       <p style="font-size: 1.1rem;">
-        Las TIC (Tecnologías de la Información y la Comunicación) son el conjunto de recursos, herramientas, programas, redes y dispositivos tecnológicos que permiten recopilar, procesar, almacenar, transmitir y presentar información en formato digital (como voz, datos, texto, imágenes y video)[cite: 8].
+        Las TIC (Tecnologías de la Información y la Comunicación) son el conjunto de recursos, herramientas, programas, redes y dispositivos tecnológicos que permiten recopilar, procesar, almacenar, transmitir y presentar información en formato digital (como voz, datos, texto, imágenes y video).
         <button class="audio-btn-section" onclick="leerTexto('parrafo-que-son-tic')" aria-label="Escuchar qué son las TIC">🔊 Escuchar párrafo</button>
       </p>
     </div>
@@ -453,7 +485,7 @@ footer p {margin: 8px 0;}
   </div>
 </section>
 
-<!-- 4. CONSEJOS -->
+<!-- 4. CONSEJOS CON IMAGEN AL LADO IZQUIERDO -->
 <section id="consejos" aria-labelledby="titulo-consejos">
   <div class="section-head">
     <h2 id="titulo-consejos">10 consejos para usar las TIC responsablemente</h2>
@@ -461,17 +493,26 @@ footer p {margin: 8px 0;}
       <button class="audio-btn-section" onclick="leerTexto('bloque-pasos-consejos')" aria-label="Escuchar los 10 consejos">🔊 Escuchar todos los consejos</button>
     </p>
   </div>
-  <div class="steps" id="bloque-pasos-consejos">
-    <div class="step"><div class="num" aria-label="Paso 1">1</div><div><b>Protege tus contraseñas.</b> Crea claves largas y diferentes; no las compartas con otras personas. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 1: Protege tus contraseñas. Crea claves largas y diferentes; no las compartas con otras personas.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 2">2</div><div><b>Cuida tus datos personales.</b> Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 2: Cuida tus datos personales. Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 3">3</div><div><b>Verifica la información.</b> Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 3: Verifica la información. Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 4">4</div><div><b>Respeta a los demás.</b> Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 4: Respeta a los demás. Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 5">5</div><div><b>Pide permiso.</b> No publiques fotos, audios o conversaciones de otras personas sin su autorización. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 5: Pide permiso. No publiques fotos, audios o conversaciones de otras personas sin su autorización.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 6">6</div><div><b>Desconfía de enlaces sospechosos.</b> No abras archivos ni mensajes que soliciten claves o datos bancarios. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 6: Desconfía de enlaces sospechosos. No abras archivos ni mensajes que soliciten claves o datos bancarios.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 7">7</div><div><b>Actualiza tus dispositivos.</b> Mantén el sistema y las aplicaciones actualizadas y utiliza medidas de seguridad. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 7: Actualiza tus dispositivos. Mantén el sistema y las aplicaciones actualizadas y utiliza medidas de seguridad.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 8">8</div><div><b>Equilibra tu tiempo.</b> Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 8: Equilibra tu tiempo. Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 9">9</div><div><b>Actúa frente al ciberacoso.</b> No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 9: Actúa frente al ciberacoso. No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza.')">🔊</button></div></div>
-    <div class="step"><div class="num" aria-label="Paso 10">10</div><div><b>Usa la tecnología para hacer el bien.</b> Aprende, crea, colabora y comparte contenido que aporte algo positivo. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 10: Usa la tecnología para hacer el bien. Aprende, crea, colabora y comparte contenido que aporte algo positivo.')">🔊</button></div></div>
+
+  <div class="consejos-flex-container">
+    <!-- Imagen colocada a la izquierda -->
+    <img src="imagen_8.png" alt="Aprender con TIC: Crear, opinar, comunicarse e investigar" class="consejos-left-img">
+
+    <!-- Pasos / Consejos colocados a la derecha -->
+    <div class="consejos-right-steps">
+      <div class="steps" id="bloque-pasos-consejos">
+        <div class="step"><div class="num" aria-label="Paso 1">1</div><div><b>Protege tus contraseñas.</b> Crea claves largas y diferentes; no las compartas con otras personas. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 1: Protege tus contraseñas. Crea claves largas y diferentes; no las compartas con otras personas.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 2">2</div><div><b>Cuida tus datos personales.</b> Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 2: Cuida tus datos personales. Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 3">3</div><div><b>Verifica la información.</b> Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 3: Verifica la información. Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 4">4</div><div><b>Respeta a los demás.</b> Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 4: Respeta a los demás. Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 5">5</div><div><b>Pide permiso.</b> No publiques fotos, audios o conversaciones de otras personas sin su autorización. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 5: Pide permiso. No publiques fotos, audios o conversaciones de otras personas sin su autorización.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 6">6</div><div><b>Desconfía de enlaces sospechosos.</b> No abras archivos ni mensajes que soliciten claves o datos bancarios. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 6: Desconfía de enlaces sospechosos. No abras archivos ni mensajes que soliciten claves o datos bancarios.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 7">7</div><div><b>Actualiza tus dispositivos.</b> Mantén el sistema y las aplicaciones actualizadas y utiliza medidas de seguridad. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 7: Actualiza tus dispositivos. Mantén el sistema y las aplicaciones actualizadas y utiliza medidas de seguridad.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 8">8</div><div><b>Equilibra tu tiempo.</b> Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 8: Equilibra tu tiempo. Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 9">9</div><div><b>Actúa frente al ciberacoso.</b> No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 9: Actúa frente al ciberacoso. No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza.')">🔊</button></div></div>
+        <div class="step"><div class="num" aria-label="Paso 10">10</div><div><b>Usa la tecnología para hacer el bien.</b> Aprende, crea, colabora y comparte contenido que aporte algo positivo. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 10: Usa la tecnología para hacer el bien. Aprende, crea, colabora y comparte contenido que aporte algo positivo.')">🔊</button></div></div>
+      </div>
+    </div>
   </div>
 </section>
 

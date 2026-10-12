@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,15 +9,79 @@
 <style>
 :root{--navy:#12233f;--blue:#2463eb;--cyan:#22c1c3;--pale:#eff8ff;--ink:#243247;--white:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.65;background:#ffffff}
+
+/* Estilo para saltar al contenido principal (Accesibilidad) */
+.skip-link{position:absolute;top:-40px;left:0;background:#12233f;color:white;padding:8px;z-index:100;transition:top 0.3s}
+.skip-link:focus{top:0}
+
 header{background:linear-gradient(125deg,var(--navy),#1e58a8 60%,#22a6b3);color:white;padding:22px 7%;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #10294a22}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.5px}.nav a{color:white;text-decoration:none;margin:0 8px;font-size:.95rem}.nav a:hover{text-decoration:underline}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.5px}
+.nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.nav a{color:white;text-decoration:none;margin:0 4px;font-size:.95rem}.nav a:hover, .nav a:focus{text-decoration:underline;outline:2px solid #fff}
+
+/* Controles de audio del encabezado (Lector General) */
+.audio-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 10px;
+}
+.audio-btn-main {
+  background: var(--cyan);
+  color: #0c1930;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: background 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.audio-btn-main:hover {
+  background: #1ab3b5;
+  transform: translateY(-2px);
+}
+.audio-btn-main.secondary {
+  background: #e63946;
+  color: white;
+}
+.audio-btn-main.secondary:hover {
+  background: #d90429;
+}
+
+/* Botones de lectura individual por sección o párrafo */
+.audio-btn-section {
+  background: #ffffff;
+  color: var(--blue);
+  border: 1px solid #d0e2ff;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.78rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.audio-btn-section:hover {
+  background: var(--blue);
+  color: white;
+  transform: translateY(-1px);
+}
 
 /* Estilos de la sección Principal (Hero) */
 .hero{padding:60px 8% 70px;background:linear-gradient(135deg, #e6f2ff 0%, #f0f7ff 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .hero-header-container{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;max-width:900px;margin-bottom:10px}
 .hero-title-box{flex:1;min-width:280px;text-align:center}
 
-/* Título principal con cuadro colorido */
 .hero h1{
   font-size:clamp(2rem, 4vw, 3.2rem);
   line-height:1.2;
@@ -30,12 +96,29 @@ header{background:linear-gradient(125deg,var(--navy),#1e58a8 60%,#22a6b3);color:
 
 .school-logo{width:130px;height:auto;max-width:100%;flex:0 0 auto;filter:drop-shadow(0 4px 8px rgba(18,35,63,0.15))}
 .hero p{font-size:1.15rem;max-width:650px;margin-top:20px}
-.hero-img{max-width:100%;width:420px;height:auto;border-radius:18px;margin:20px 0;box-shadow:0 10px 25px rgba(18,35,63,0.12)}
+
+/* Contenedor lado a lado para la imagen y los autores */
+.hero-content-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+  max-width: 950px;
+}
+
+.hero-img{max-width:100%;width:420px;height:auto;border-radius:18px;box-shadow:0 10px 25px rgba(18,35,63,0.12)}
+
+/* Caja de autores con viñetas */
+.author-box{text-align: left; background: white; padding: 25px 30px; border-radius: 16px; box-shadow: 0 8px 20px rgba(18,35,63,0.08); border: 1px solid #e3eef9; min-width: 260px;}
+.author-box p { margin: 0 0 10px 0; font-weight: bold; color: #12233f; font-size: 1.05rem; }
+.author-list{margin: 0; padding-left: 20px; list-style-type: disc; text-align: left;}
+.author-list li{font-weight: bold; color: #1d4e9b; margin-bottom: 6px;}
 
 section{padding:65px 8%;scroll-margin-top:90px}
 .section-head{text-align:center;max-width:850px;margin:0 auto 35px}
 
-/* Títulos de secciones en cuadros coloridos */
 .section-head h2{
   font-size: 1.8rem;
   color: #ffffff;
@@ -46,198 +129,418 @@ section{padding:65px 8%;scroll-margin-top:90px}
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
-/* Colores específicos para los cuadros de cada sección */
-#importancia .section-head h2 {
-  background: linear-gradient(135deg, #00b4d8, #0077b6);
-}
+#importancia .section-head h2 { background: linear-gradient(135deg, #00b4d8, #0077b6); }
+#riesgos .section-head h2 { background: linear-gradient(135deg, #e63946, #d90429); }
+#consejos .section-head h2 { background: linear-gradient(135deg, #38b000, #007200); }
+#video-seccion .section-head h2 { background: linear-gradient(135deg, #ff0000, #cc0000); }
+.checklist-section .section-head h2 { background: linear-gradient(135deg, #7209b7, #4361ee); }
 
-#riesgos .section-head h2 {
-  background: linear-gradient(135deg, #e63946, #d90429);
-}
-
-#consejos .section-head h2 {
-  background: linear-gradient(135deg, #38b000, #007200);
-}
-
-#video-seccion .section-head h2 {
-  background: linear-gradient(135deg, #ff0000, #cc0000);
-}
-
-.checklist-section .section-head h2 {
-  background: linear-gradient(135deg, #7209b7, #4361ee);
-}
-
-/* --- SECCIONES --- */
 #importancia{background:linear-gradient(135deg, #e8f8f5 0%, #f4fbf9 100%);}
 .importance-container{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-bottom:35px}
 .importance-img{max-width:100%;width:350px;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(18,35,63,0.1);flex:0 0 auto}
 .importance-text{flex:1;min-width:280px;text-align:left}
 
+/* SECCIÓN RIESGOS ALINEADA */
 #riesgos{background:linear-gradient(135deg, #f2efff 0%, #f8f6ff 100%);}
-.risks-container{display:flex;align-items:center;justify-content:space-between;gap:35px;flex-wrap:wrap-reverse;margin-bottom:35px}
-.risks-text{flex:1;min-width:280px;max-width:600px;text-align:justify;line-height:1.75;font-size:1.05rem;color:#2c3e50}
-.risks-img{max-width:100%;width:350px;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(18,35,63,0.1);flex:0 0 auto}
+.risks-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto 35px auto;
+  flex-wrap: wrap;
+}
+.risks-text{
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: justify;
+  line-height: 1.75;
+  font-size: 1.05rem;
+  color: #2c3e50;
+  margin: 0;
+}
+.risks-img{
+  max-width: 100%;
+  width: 380px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(18,35,63,0.12);
+  flex: 0 0 auto;
+  object-fit: cover;
+}
 
 #consejos{background:linear-gradient(135deg, #fffbf0 0%, #fffdf7 100%);}
-
 #video-seccion {background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%); text-align: center;}
-.local-video-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: white;
-  padding: 20px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-.local-video-container video {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  outline: none;
-}
+.local-video-container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+.local-video-container video { width: 100%; height: auto; border-radius: 12px; outline: none; }
 
-/* Tarjetas y Pasos */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card{background:white;padding:25px;border-radius:18px;box-shadow:0 8px 24px #1d40640c;border:1px solid #e3eef9;transition:transform 0.2s ease, box-shadow 0.2s ease}.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #1d40641a}.card .icon{font-size:2rem}.card h3{color:#1c4c91;margin:8px 0}
-.steps{max-width:850px;margin:auto}.step{display:flex;gap:18px;margin:18px 0;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}.num{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dceaff;color:#1747a6;font-weight:bold;font-size:1.1rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;padding:25px;border-radius:18px;box-shadow:0 8px 24px #1d40640c;border:1px solid #e3eef9;transition:transform 0.2s ease, box-shadow 0.2s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #1d40641a}
+.card .icon{font-size:2rem}
+.card h3{color:#1c4c91;margin:8px 0}
 
+.steps{max-width:850px;margin:auto}
+.step{display:flex;gap:18px;margin:18px 0;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}
+.num{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#dceaff;color:#1747a6;font-weight:bold;font-size:1.1rem}
+
+/* --- ESTILOS DE LA CHECKLIST DINÁMICA --- */
 .checklist-section{background:#f4f9ff;}
-.checklist{columns:2;max-width:850px;margin:auto}.checklist li{padding:7px 0}
 
-.callout{background:linear-gradient(135deg, #182e52 0%, #244170 100%);color:white;border-radius:20px;padding:35px;text-align:center;max-width:950px;margin:auto;box-shadow:0 10px 25px rgba(18,35,63,0.15)}.callout h2{color:white}
+/* Barra de Progreso Dinámica */
+.progress-container {
+  max-width: 850px;
+  margin: 0 auto 25px auto;
+  background: #e1ebf7;
+  border-radius: 20px;
+  padding: 15px 20px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #1a365d;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.progress-bar-bg {
+  background: #ffffff;
+  height: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7209b7, #4361ee);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
 
-.author-box{text-align: left; margin: 15px 0;}
-.author-list{margin: 5px 0; padding-left: 0; list-style: none; text-align: left;}
-.author-list li{font-weight: bold; color: #1d4e9b; margin-bottom: 4px;}
+/* Grid de tarjetas dinámicas */
+.interactive-checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 15px;
+  max-width: 850px;
+  margin: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.check-item {
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 2px solid #e2ecf8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.check-item:hover {
+  border-color: #4361ee;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(67, 97, 238, 0.12);
+}
+
+.check-item.completed {
+  background: #f0f4ff;
+  border-color: #7209b7;
+}
+
+.check-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #7209b7;
+  flex-shrink: 0;
+}
+
+.check-item label {
+  flex: 1;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #243247;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.check-item.completed label {
+  color: #5b21b6;
+  text-decoration: line-through;
+}
+
+.callout{background:linear-gradient(135deg, #182e52 0%, #244170 100%);color:white;border-radius:20px;padding:35px;text-align:center;max-width:950px;margin:auto;box-shadow:0 10px 25px rgba(18,35,63,0.15)}
+.callout h2{color:white}
 
 footer{background:#0c1930;color:#dbe8ff;text-align:center;padding:28px 7%}
 footer p {margin: 8px 0;}
 
-@media(max-width:750px){.hero{padding-top:40px}.nav{justify-content:center}.nav a{margin:4px}.checklist{columns:1}.importance-container, .risks-container{flex-direction:column;text-align:center}.importance-text, .risks-text{text-align:left;max-width:100%}.hero-header-container{flex-direction:column;text-align:center}.hero-title-box{text-align:center}header{position:static}}
+@media(max-width:750px){.hero{padding-top:40px}.nav{justify-content:center}.nav a{margin:4px}.interactive-checklist{grid-template-columns:1fr}.importance-container, .risks-container, .hero-content-flex{flex-direction:column;text-align:center}.importance-text, .risks-text, .author-box{text-align:left;max-width:100%}.hero-header-container{flex-direction:column;text-align:center}.hero-title-box{text-align:center}header{position:static}}
 </style>
 </head>
 <body>
-<header><div class="nav"><div class="brand">📘 PROYECTO PICA</div><nav aria-label="Menú principal"><a href="#inicio">Inicio</a><a href="#importancia">Importancia</a><a href="#riesgos">Riesgos</a><a href="#consejos">Consejos</a><a href="#video-seccion">Video</a><a href="#compromiso">Compromiso</a></nav></div></header>
-<main>
+
+<!-- Enlace de salto rápido para accesibilidad por teclado -->
+<a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+<header>
+  <div class="nav">
+    <div class="brand" aria-label="Proyecto PICA">📘 PROYECTO PICA</div>
+    <div class="nav-links">
+      <nav aria-label="Menú principal de navegación">
+        <a href="#inicio">Inicio</a>
+        <a href="#importancia">Importancia</a>
+        <a href="#riesgos">Riesgos</a>
+        <a href="#consejos">Consejos</a>
+        <a href="#video-seccion">Video</a>
+        <a href="#compromiso">Compromiso</a>
+      </nav>
+
+      <!-- Lector General (Lee todo el documento) -->
+      <div class="audio-controls" aria-label="Controles de lectura general por voz">
+        <button id="btn-leer-todo" class="audio-btn-main" onclick="toggleLecturaGeneral()" aria-label="Escuchar toda la página">
+          🔊 <span id="btn-text-todo">Escuchar todo</span>
+        </button>
+        <button id="btn-detener-todo" class="audio-btn-main secondary" onclick="detenerLectura()" style="display:none;" aria-label="Detener audio">
+          ⏹️ Detener
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="contenido-principal">
 
 <!-- 1. INICIO -->
-<section class="hero" id="inicio">
+<section class="hero" id="inicio" aria-labelledby="titulo-principal">
   <div class="hero-header-container">
     <div class="hero-title-box">
-      <h1>Uso responsable de las TIC</h1>
+      <h1 id="titulo-principal">Uso responsable de las TIC</h1>
     </div>
-    <img src="logo_colegio.png" alt="Logo Colegio Particular Mundo América" class="school-logo">
+    <img src="logo_colegio.png" alt="Logo oficial del Colegio Particular Mundo América" class="school-logo">
   </div>
 
-  <p>La tecnología nos conecta, nos enseña y nos ayuda a crear. Aprendamos a utilizarla de manera segura, respetuosa, crítica y equilibrada.</p>
+  <p id="parrafo-inicio">
+    La tecnología nos conecta, nos enseña y nos ayuda a crear. Aprendamos a utilizarla de manera segura, respetuosa, crítica y equilibrada.
+    <button class="audio-btn-section" onclick="leerTexto('parrafo-inicio')" aria-label="Escuchar párrafo de inicio">🔊 Escuchar</button>
+  </p>
   
-  <img src="imagen_4.png" alt="Iconos de Tecnologías de la Información y Comunicación" class="hero-img">
+  <!-- Imagen y Autores lado a lado -->
+  <div class="hero-content-flex">
+    <img src="imagen_4.png" alt="Ilustración representativa con iconos de Tecnologías de la Información y Comunicación" class="hero-img">
 
-  <div class="author-box">
-    <p style="margin-bottom: 5px; font-weight: bold; color: #12233f;">Estudiantes:</p>
-    <ul class="author-list">
-      <li>Kristel Suarez</li>
-      <li>Joshua Marin</li>
-      <li>Mia Pincay</li>
-      <li>Jeremy Sanchez</li>
-      <li>Anthony Cepeda</li>
-    </ul>
+    <div class="author-box" id="bloque-autores">
+      <p>Estudiantes autores: <button class="audio-btn-section" onclick="leerTexto('bloque-autores')" aria-label="Escuchar lista de autores">🔊 Escuchar</button></p>
+      <ul class="author-list" aria-label="Lista de integrantes del grupo">
+        <li>Kristel Suarez</li>
+        <li>Joshua Marin</li>
+        <li>Mia Pincay</li>
+        <li>Jeremy Sanchez</li>
+        <li>Anthony Cepeda</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- 2. IMPORTANCIA -->
-<section id="importancia">
+<section id="importancia" aria-labelledby="titulo-importancia">
   <div class="section-head">
-    <h2>¿Qué son las TIC y por qué importan?</h2>
+    <h2 id="titulo-importancia">¿Qué son las TIC y por qué importan?</h2>
   </div>
   
   <div class="importance-container">
-    <img src="imagen_5.png" alt="Iconos de TIC" class="importance-img">
-    <div class="importance-text">
-      <p style="font-size: 1.1rem;">Las Tecnologías de la Información y la Comunicación (TIC) incluyen herramientas y recursos digitales que permiten crear, buscar, compartir y comunicar información.</p>
+    <img src="imagen_5.png" alt="Gráfico conceptual sobre herramientas de información y comunicación" class="importance-img">
+    <div class="importance-text" id="parrafo-que-son-tic">
+      <p style="font-size: 1.1rem;">
+        Las TIC (Tecnologías de la Información y la Comunicación) son el conjunto de recursos, herramientas, programas, redes y dispositivos tecnológicos que permiten recopilar, procesar, almacenar, transmitir y presentar información en formato digital (como voz, datos, texto, imágenes y video)[cite: 3].
+        <button class="audio-btn-section" onclick="leerTexto('parrafo-que-son-tic')" aria-label="Escuchar qué son las TIC">🔊 Escuchar párrafo</button>
+      </p>
     </div>
   </div>
 
   <div class="cards">
-    <article class="card"><div class="icon">📚</div><h3>Aprendizaje</h3><p>Facilitan el acceso a libros digitales, clases virtuales, tutoriales y materiales educativos que amplían nuestros conocimientos.</p></article>
-    <article class="card"><div class="icon">🤝</div><h3>Comunicación</h3><p>Permiten conversar y colaborar con familiares, docentes y compañeros, incluso cuando están lejos.</p></article>
-    <article class="card"><div class="icon">🎨</div><h3>Creatividad</h3><p>Ayudan a crear presentaciones, videos, páginas web y proyectos para expresar ideas y resolver problemas.</p></article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">📚</div>
+      <h3>Aprendizaje <button class="audio-btn-section" onclick="leerTextoDirecto('Aprendizaje: Facilitan el acceso a libros digitales, clases virtuales, tutoriales y materiales educativos que amplían nuestros conocimientos.')">🔊</button></h3>
+      <p>Facilitan el acceso a libros digitales, clases virtuales, tutoriales y materiales educativos que amplían nuestros conocimientos.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">🤝</div>
+      <h3>Comunicación <button class="audio-btn-section" onclick="leerTextoDirecto('Comunicación: Permiten conversar y colaborar con familiares, docentes y compañeros, incluso cuando están lejos.')">🔊</button></h3>
+      <p>Permiten conversar y colaborar con familiares, docentes y compañeros, incluso cuando están lejos.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">🎨</div>
+      <h3>Creatividad <button class="audio-btn-section" onclick="leerTextoDirecto('Creatividad: Ayudan a crear presentaciones, videos, páginas web y proyectos para expresar ideas y resolver problemas.')">🔊</button></h3>
+      <p>Ayudan a crear presentaciones, videos, páginas web y proyectos para expresar ideas y resolver problemas.</p>
+    </article>
   </div>
 </section>
 
 <!-- 3. RIESGOS -->
-<section id="riesgos">
+<section id="riesgos" aria-labelledby="titulo-riesgos">
   <div class="section-head">
-    <h2>Riesgos del uso inadecuado</h2>
+    <h2 id="titulo-riesgos">Riesgos del uso inadecuado</h2>
   </div>
 
   <div class="risks-container">
-    <div class="risks-text">
-      <p>El uso inadecuado de las TIC provoca adicción digital, ansiedad y aislamiento social, deteriorando las relaciones interpersonales. Físicamente, el exceso de pantallas causa fatiga ocular, dolores cervicales y sedentarismo debido a la falta de movilidad. En el ámbito académico y laboral, las distracciones constantes generan una pérdida drástica de concentración y bajo rendimiento. Además, expone a los usuarios a peligros graves como el ciberacoso, estafas virtuales y robo de identidad.</p>
+    <div class="risks-text" id="parrafo-riesgos">
+      <p>
+        El uso inadecuado de las TIC provoca adicción digital, ansiedad y aislamiento social, deteriorando las relaciones interpersonales. Físicamente, el exceso de pantallas causa fatiga ocular, dolores cervicales y sedentarismo debido a la falta de movilidad. En el ámbito académico y laboral, las distracciones constantes generan una pérdida drástica de concentración y bajo rendimiento. Además, expone a los usuarios a peligros graves como el ciberacoso, estafas virtuales y robo de identidad[cite: 1].
+        <button class="audio-btn-section" onclick="leerTexto('parrafo-riesgos')" aria-label="Escuchar riesgos del uso inadecuado">🔊 Escuchar párrafo</button>
+      </p>
     </div>
-    <img src="imagen_6.png" alt="Riesgos del uso de la tecnología" class="risks-img">
+    <img src="imagen_6.png" alt="Gráfico ilustrativo sobre los riesgos asociados al mal uso tecnológico" class="risks-img">
   </div>
 
   <div class="cards">
-    <article class="card"><div class="icon">🔐</div><h3>Pérdida de privacidad</h3><p>Compartir contraseñas, ubicación, documentos o datos personales puede exponer nuestra identidad y seguridad.</p></article>
-    <article class="card"><div class="icon">🧩</div><h3>Desinformación</h3><p>Los rumores, noticias falsas y contenidos manipulados pueden confundir. Es importante verificar antes de compartir.</p></article>
-    <article class="card"><div class="icon">💬</div><h3>Ciberacoso</h3><p>Insultar, amenazar, humillar o difundir imágenes de alguien sin permiso causa daño. No participes y busca ayuda.</p></article>
-    <article class="card"><div class="icon">⏳</div><h3>Uso excesivo</h3><p>Pasar demasiado tiempo conectado puede afectar el descanso, el estudio, la actividad física y la convivencia.</p></article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">🔐</div>
+      <h3>Pérdida de privacidad <button class="audio-btn-section" onclick="leerTextoDirecto('Pérdida de privacidad: Compartir contraseñas, ubicación, documentos o datos personales puede exponer nuestra identidad y seguridad.')">🔊</button></h3>
+      <p>Compartir contraseñas, ubicación, documentos o datos personales puede exponer nuestra identidad y seguridad.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">🧩</div>
+      <h3>Desinformación <button class="audio-btn-section" onclick="leerTextoDirecto('Desinformación: Los rumores, noticias falsas y contenidos manipulados pueden confundir. Es importante verificar antes de compartir.')">🔊</button></h3>
+      <p>Los rumores, noticias falsas y contenidos manipulados pueden confundir. Es importante verificar antes de compartir.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">💬</div>
+      <h3>Ciberacoso <button class="audio-btn-section" onclick="leerTextoDirecto('Ciberacoso: Insultar, amenazar, humillar o difundir imágenes de alguien sin permiso causa daño. No participes y busca ayuda.')">🔊</button></h3>
+      <p>Insultar, amenazar, humillar o difundir imágenes de alguien sin permiso causa daño. No participes y busca ayuda.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">⏳</div>
+      <h3>Uso excesivo <button class="audio-btn-section" onclick="leerTextoDirecto('Uso excesivo: Pasar demasiado tiempo conectado puede afectar el descanso, el estudio, la actividad física y la convivencia.')">🔊</button></h3>
+      <p>Pasar demasiado tiempo conectado puede afectar el descanso, el estudio, la actividad física y la convivencia.</p>
+    </article>
   </div>
 </section>
 
 <!-- 4. CONSEJOS -->
-<section id="consejos">
+<section id="consejos" aria-labelledby="titulo-consejos">
   <div class="section-head">
-    <h2>10 consejos para usar las TIC responsablemente</h2>
-    <p>Pequeñas acciones cotidianas hacen que Internet sea un espacio más seguro para todos.</p>
+    <h2 id="titulo-consejos">10 consejos para usar las TIC responsablemente</h2>
+    <p>Pequeñas acciones cotidianas hacen que Internet sea un espacio más seguro para todos. 
+      <button class="audio-btn-section" onclick="leerTexto('bloque-pasos-consejos')" aria-label="Escuchar los 10 consejos">🔊 Escuchar todos los consejos</button>
+    </p>
   </div>
-  <div class="steps">
-    <div class="step"><div class="num">1</div><div><b>Protege tus contraseñas.</b> Crea claves largas y diferentes; no las compartas con otras personas.</div></div>
-    <div class="step"><div class="num">2</div><div><b>Cuida tus datos personales.</b> Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada.</div></div>
-    <div class="step"><div class="num">3</div><div><b>Verifica la información.</b> Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia.</div></div>
-    <div class="step"><div class="num">4</div><div><b>Respeta a los demás.</b> Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona.</div></div>
-    <div class="step"><div class="num">5</div><div><b>Pide permiso.</b> No publiques fotos, audios o conversaciones de otras personas sin su autorización.</div></div>
-    <div class="step"><div class="num">6</div><div><b>Desconfía de enlaces sospechosos.</b> No abras archivos ni mensajes que soliciten claves o datos bancarios.</div></div>
-    <div class="step"><div class="num">7</div><div><b>Actualiza tus dispositivos.</b> Mantén el sistema y las aplicaciones actualizados y utiliza medidas de seguridad.</div></div>
-    <div class="step"><div class="num">8</div><div><b>Equilibra tu tiempo.</b> Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir.</div></div>
-    <div class="step"><div class="num">9</div><div><b>Actúa frente al ciberacoso.</b> No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza.</div></div>
-    <div class="step"><div class="num">10</div><div><b>Usa la tecnología para hacer el bien.</b> Aprende, crea, colabora y comparte contenido que aporte algo positivo.</div></div>
+  <div class="steps" id="bloque-pasos-consejos">
+    <div class="step"><div class="num" aria-label="Paso 1">1</div><div><b>Protege tus contraseñas.</b> Crea claves largas y diferentes; no las compartas con otras personas. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 1: Protege tus contraseñas. Crea claves largas y diferentes; no las compartas con otras personas.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 2">2</div><div><b>Cuida tus datos personales.</b> Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 2: Cuida tus datos personales. Piensa antes de publicar fotos, dirección, teléfono, ubicación o información privada.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 3">3</div><div><b>Verifica la información.</b> Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 3: Verifica la información. Revisa quién publica, la fecha y otras fuentes confiables antes de compartir una noticia.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 4">4</div><div><b>Respeta a los demás.</b> Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 4: Respeta a los demás. Escribe con amabilidad y recuerda que detrás de cada pantalla hay una persona.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 5">5</div><div><b>Pide permiso.</b> No publiques fotos, audios o conversaciones de otras personas sin su autorización. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 5: Pide permiso. No publiques fotos, audios o conversaciones de otras personas sin su autorización.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 6">6</div><div><b>Desconfía de enlaces sospechosos.</b> No abras archivos ni mensajes que soliciten claves o datos bancarios. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 6: Desconfía de enlaces sospechosos. No abras archivos ni mensajes que soliciten claves o datos bancarios.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 7">7</div><div><b>Actualiza tus dispositivos.</b> Mantén el sistema y las aplicaciones actualizadas y utiliza medidas de seguridad. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 7: Actualiza tus dispositivos. Mantén el sistema y las aplicaciones actualizadas y utiliza medidas de seguridad.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 8">8</div><div><b>Equilibra tu tiempo.</b> Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 8: Equilibra tu tiempo. Haz pausas, duerme lo suficiente y reserva tiempo para estudiar, moverte y convivir.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 9">9</div><div><b>Actúa frente al ciberacoso.</b> No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 9: Actúa frente al ciberacoso. No respondas con agresión; guarda evidencia, bloquea, reporta y cuéntaselo a un adulto de confianza.')">🔊</button></div></div>
+    <div class="step"><div class="num" aria-label="Paso 10">10</div><div><b>Usa la tecnología para hacer el bien.</b> Aprende, crea, colabora y comparte contenido que aporte algo positivo. <button class="audio-btn-section" onclick="leerTextoDirecto('Consejo 10: Usa la tecnología para hacer el bien. Aprende, crea, colabora y comparte contenido que aporte algo positivo.')">🔊</button></div></div>
   </div>
 </section>
 
 <!-- 5. SECCIÓN DE VIDEO LOCAL -->
-<section id="video-seccion">
+<section id="video-seccion" aria-labelledby="titulo-video">
   <div class="section-head">
-    <h2>Video Informativo sobre las TIC</h2>
+    <h2 id="titulo-video">Video Informativo sobre las TIC</h2>
     <p>Mira este video explicativo sobre la importancia y el buen uso de la tecnología:</p>
   </div>
   
   <div class="local-video-container">
-    <video controls>
+    <video controls aria-label="Video educativo sobre el uso responsable de las TIC">
       <source src="video_tic.mp4" type="video/mp4">
       Tu navegador no soporta la reproducción de videos.
     </video>
   </div>
 </section>
 
-<!-- CHECKLIST Y COMPROMISO -->
-<section class="checklist-section">
+<!-- 6. CHECKLIST DINÁMICA INTERACTIVA -->
+<section class="checklist-section" aria-labelledby="titulo-checklist">
   <div class="section-head">
-    <h2>Mi lista de verificación digital</h2>
-    <p>Antes de compartir algo, haz una pausa y comprueba lo siguiente:</p>
+    <h2 id="titulo-checklist">Mi lista de verificación digital</h2>
+    <p>Antes de compartir algo, haz una pausa y comprueba tus hábitos marcando las casillas: 
+      <button class="audio-btn-section" onclick="leerTexto('bloque-checklist-interactivo')" aria-label="Escuchar lista de verificación">🔊 Escuchar lista</button>
+    </p>
   </div>
-  <ul class="checklist"><li>☑ ¿Es verdadero y puedo verificarlo?</li><li>☑ ¿Respeta la privacidad de los demás?</li><li>☑ ¿El lenguaje es respetuoso?</li><li>☑ ¿Estoy protegiendo mis datos?</li><li>☑ ¿Es necesario compartirlo?</li><li>☑ ¿La fuente es confiable?</li><li>☑ ¿Estoy usando mi tiempo de forma equilibrada?</li><li>☑ ¿Sé qué hacer si algo me incomoda?</li></ul>
+
+  <!-- Barra de progreso dinámica -->
+  <div class="progress-container">
+    <div class="progress-info">
+      <span>Tu nivel de responsabilidad digital:</span>
+      <span id="progress-text">0% completado</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div id="progress-bar" class="progress-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- Lista interactiva de Checkboxes -->
+  <ul class="interactive-checklist" id="bloque-checklist-interactivo" aria-label="Lista interactiva de verificación digital">
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk1" onchange="actualizarProgreso()">
+      <label for="chk1">¿Es verdadero y puedo verificarlo?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Es verdadero y puedo verificarlo?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk2" onchange="actualizarProgreso()">
+      <label for="chk2">¿Es necesario compartirlo?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Es necesario compartirlo?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk3" onchange="actualizarProgreso()">
+      <label for="chk3">¿Respeta la privacidad de los demás?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Respeta la privacidad de los demás?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk4" onchange="actualizarProgreso()">
+      <label for="chk4">¿La fuente es confiable?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿La fuente es confiable?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk5" onchange="actualizarProgreso()">
+      <label for="chk5">¿El lenguaje es respetuoso?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿El lenguaje es respetuoso?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk6" onchange="actualizarProgreso()">
+      <label for="chk6">¿Estoy usando mi tiempo de forma equilibrada?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Estoy usando mi tiempo de forma equilibrada?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk7" onchange="actualizarProgreso()">
+      <label for="chk7">¿Estoy protegiendo mis datos?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Estoy protegiendo mis datos?')">🔊</button>
+    </li>
+    <li class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="chk8" onchange="actualizarProgreso()">
+      <label for="chk8">¿Sé qué hacer si algo me incomoda?</label>
+      <button class="audio-btn-section" onclick="event.stopPropagation(); leerTextoDirecto('¿Sé qué hacer si algo me incomoda?')">🔊</button>
+    </li>
+  </ul>
 </section>
 
-<section id="compromiso" style="background:#ffffff;">
-  <div class="callout"><h2>Ser responsables también en el mundo digital</h2><p>Nos comprometemos a proteger nuestra información, respetar a los demás, verificar lo que compartimos y utilizar la tecnología para aprender y contribuir positivamente a nuestra comunidad.</p><p><b>La tecnología es una herramienta: úsala con criterio, empatía y responsabilidad.</b></p></div>
+<section id="compromiso" style="background:#ffffff;" aria-labelledby="titulo-compromiso">
+  <div class="callout" id="bloque-compromiso">
+    <h2 id="titulo-compromiso">Ser responsables también en el mundo digital <button class="audio-btn-section" onclick="leerTexto('bloque-compromiso')">🔊 Escuchar</button></h2>
+    <p>Nos comprometemos a proteger nuestra información, respetar a los demás, verificar lo que compartimos y utilizar la tecnología para aprender y contribuir positivamente a nuestra comunidad.</p>
+    <p><b>La tecnología es una herramienta: úsala con criterio, empatía y responsabilidad.</b></p>
+  </div>
 </section>
 </main>
 
 <footer>
   <p><b>Proyecto PICA · Diseño y Desarrollo Web</b></p>
   <p><b>Curso:</b> 2do Bachillerato</p>
-  <p style="margin-top: 12px; margin-bottom: 4px;"><b>Integrantes:</b></p>
+  <p style="margin-top: 12px; margin-bottom: 4px;"><b>Integrantes del equipo:</b></p>
   <p style="margin: 2px 0;">Kristel Suarez</p>
   <p style="margin: 2px 0;">Joshua Marin</p>
   <p style="margin: 2px 0;">Mia Pincay</p>
@@ -245,5 +548,129 @@ footer p {margin: 8px 0;}
   <p style="margin: 2px 0;">Anthony Cepeda</p>
   <p style="margin-top: 15px; font-size: 0.9rem; color: #a4b8df;">Contenido educativo elaborado para promover una ciudadanía digital segura y respetuosa.</p>
 </footer>
+
+<!-- SCRIPTS INTERACTIVOS Y DE LECTURA -->
+<script>
+  /* --- LÓGICA DE LA CHECKLIST DINÁMICA --- */
+  function toggleCheck(container) {
+    const checkbox = container.querySelector('input[type="checkbox"]');
+    if (event.target !== checkbox && !event.target.classList.contains('audio-btn-section')) {
+      checkbox.checked = !checkbox.checked;
+    }
+    actualizarProgreso();
+  }
+
+  function actualizarProgreso() {
+    const checkboxes = document.querySelectorAll('.interactive-checklist input[type="checkbox"]');
+    let marcados = 0;
+
+    checkboxes.forEach(chk => {
+      const parent = chk.closest('.check-item');
+      if (chk.checked) {
+        marcados++;
+        parent.classList.add('completed');
+      } else {
+        parent.classList.remove('completed');
+      }
+    });
+
+    const porcentaje = Math.round((marcados / checkboxes.length) * 100);
+    document.getElementById('progress-bar').style.width = porcentaje + '%';
+    document.getElementById('progress-text').textContent = porcentaje + '% completado';
+  }
+
+  /* --- SCRIPT COMPLETO DE SÍNTESIS DE VOZ --- */
+  let synth = window.speechSynthesis;
+  let isPausedGeneral = false;
+
+  function toggleLecturaGeneral() {
+    const btnText = document.getElementById("btn-text-todo");
+    const btnDetener = document.getElementById("btn-detener-todo");
+
+    if (synth.speaking && !synth.paused) {
+      synth.pause();
+      isPausedGeneral = true;
+      btnText.textContent = "Reanudar todo";
+      return;
+    } else if (synth.paused && isPausedGeneral) {
+      synth.resume();
+      isPausedGeneral = false;
+      btnText.textContent = "Pausar todo";
+      return;
+    }
+
+    detenerLectura();
+
+    const mainContent = document.getElementById("contenido-principal");
+    if (!mainContent) return;
+
+    const clon = mainContent.cloneNode(true);
+    const botones = clon.querySelectorAll('.audio-btn-section, .audio-controls');
+    botones.forEach(btn => btn.remove());
+
+    const texto = clon.innerText.trim();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = "es-ES";
+    utterance.rate = 1.0;
+
+    utterance.onstart = function() {
+      btnText.textContent = "Pausar todo";
+      btnDetener.style.display = "inline-flex";
+    };
+
+    utterance.onend = resetPlayerGeneral;
+    utterance.onerror = resetPlayerGeneral;
+
+    synth.speak(utterance);
+  }
+
+  function leerTexto(elementId) {
+    detenerLectura();
+
+    const elemento = document.getElementById(elementId);
+    if (!elemento) return;
+
+    const clon = elemento.cloneNode(true);
+    const botones = clon.querySelectorAll('.audio-btn-section');
+    botones.forEach(btn => btn.remove());
+
+    const texto = clon.innerText.trim();
+    if (!texto) return;
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = "es-ES";
+    utterance.rate = 1.0;
+
+    synth.speak(utterance);
+  }
+
+  function leerTextoDirecto(texto) {
+    detenerLectura();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = "es-ES";
+    utterance.rate = 1.0;
+
+    synth.speak(utterance);
+  }
+
+  function detenerLectura() {
+    if (synth) {
+      synth.cancel();
+    }
+    resetPlayerGeneral();
+  }
+
+  function resetPlayerGeneral() {
+    isPausedGeneral = false;
+    const btnText = document.getElementById("btn-text-todo");
+    const btnDetener = document.getElementById("btn-detener-todo");
+    if (btnText) btnText.textContent = "Escuchar todo";
+    if (btnDetener) btnDetener.style.display = "none";
+  }
+</script>
+
 </body>
 </html>
+
